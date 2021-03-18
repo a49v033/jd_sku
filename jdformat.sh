@@ -13,7 +13,8 @@ composefile="$workdir/docker-compose.yml"
 
 # 基础工具和文件创建
 function jd_sku_base(){
-    [[ ! -d "$workdir" ]] && mkdir -p $workdir || { workdir_bak=${workdir}_$(date +%s); mv $workdir $workdir_bak; echo $workdir 文件已备份至 $workdir_bak; }
+	workdir_bak=${workdir}_$(date +%s)
+	[[ ! -d "$workdir" ]] && mkdir -p $workdir || echo $(mv $workdir $workdir_bak) $workdir 文件已备份至 $workdir_bak
     git clone https://github.com/mixool/jd_sku.git $workdir
 }
 
