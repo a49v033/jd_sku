@@ -11,7 +11,7 @@ wget --no-check-certificate -O jdformat.sh https://raw.githubusercontent.com/mix
 ```
 * 可按需传入 `docker-compose.yml` 配置参数,传入对应值可修改默认参数，或直接编辑 `docker-compose.yml`
 ```bash
-bash jdformat.sh 'jd_sku_var@PUSH_PLUS_TOKEN@mytoken jd_sku_var@PUSH_PLUS_USER@myuser'
+bash jdformat.sh 'jd_sku_var@TG_BOT_TOKEN@mytoken jd_sku_var@TG_USER_ID@123456 jd_sku_var@PUSH_PLUS_TOKEN@mytoken jd_sku_var@PUSH_PLUS_USER@myuser'
 ```
 [参数说明](https://gitee.com/lxk0301/jd_docker/blob/master/githubAction.md)  
 * 其它 [jdformat.sh](https://raw.githubusercontent.com/mixool/jd_sku/main/jdformat.sh)

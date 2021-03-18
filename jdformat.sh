@@ -13,7 +13,7 @@ composefile="$workdir/docker-compose.yml"
 
 # 基础工具和文件创建
 function jd_sku_base(){
-	[[ ! -d "$workdir" ]] && mkdir -p $workdir || { workdir_bak=${workdir}_$(date +%s); mv $workdir $workdir_bak; echo $workdir 文件已备份至 $workdir_bak; }
+    [[ ! -d "$workdir" ]] && mkdir -p $workdir || { workdir_bak=${workdir}_$(date +%s); mv $workdir $workdir_bak; echo $workdir 文件已备份至 $workdir_bak; }
     git clone https://github.com/mixool/jd_sku.git $workdir
 }
 
@@ -23,6 +23,7 @@ function jd_sku_var(){
     for ((i = 0; i < ${#varlist[*]}; i++)); do
         varname="$(echo ${varlist[i]} | cut -f2 -d@)"
         varvalue="$(echo ${varlist[i]} | cut -f3 -d@)"
+        [[ $i == 0 ]] && echo >>$composefile
         [[ $varname == "" || $varvalue == "" ]] && echo 变量 $varname $varvalue 参数无效 && continue
         sed -i "/$varname.*/d" $composefile
         echo "                - $varname=$varvalue" >>$composefile
