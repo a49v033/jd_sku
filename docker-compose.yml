@@ -5,10 +5,6 @@ jd_scripts:
         volumes:
                 - ./logs:/scripts/logs
         tty: true
-         extra_hosts:
-                - "gitee.com:180.97.125.228"
-                - "github.com:13.229.188.59"
-                - "raw.githubusercontent.com:151.101.228.133"
         environment:
                 - REPO_URL=git@gitee.com:lxk0301/jd_scripts.git
                 - JD_COOKIE=pt_key=aaa;pt_pin=aaaa;&pt_key=bbb;pt_pin=bbbb;
