@@ -7,14 +7,13 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin && expor
 echo $@ | grep -qE "fromfile@[^ ]+" && all_parameter=($(cat $(echo $@ | grep -oE "fromfile@[^ ]+" | cut -f2 -d@))) || all_parameter=($(echo $@))
 
 # 文件路径： jd_scripts diy 脚本和log等的保存路径
-workdir="/jd_sku/jd_scripts" && [[ ! -d "$workdir" ]] && mkdir -p $workdir
+workdir="/jd_sku/jd_scripts"
 cookiefile="$workdir/cookie.file"
 composefile="$workdir/docker-compose.yml"
 
 # 基础工具和文件创建
 function jd_sku_base(){
-	workdir_bak=${workdir}_$(date +%s)
-	[[ ! -d "$workdir" ]] && mkdir -p $workdir || echo $(mv $workdir $workdir_bak) $workdir 文件已备份至 $workdir_bak
+	[[ ! -d "$workdir" ]] && mkdir -p $workdir || { workdir_bak=${workdir}_$(date +%s); mv $workdir $workdir_bak; echo $workdir 文件已备份至 $workdir_bak; }
     git clone https://github.com/mixool/jd_sku.git $workdir
 }
 
