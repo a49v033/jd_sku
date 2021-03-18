@@ -7,4 +7,3 @@ jd_scripts:
         tty: true
         environment:
                 - REPO_URL=git@gitee.com:lxk0301/jd_scripts.git
-                - JD_COOKIE=pt_key=aaa;pt_pin=aaaa;&pt_key=bbb;pt_pin=bbbb;
