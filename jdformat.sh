@@ -14,8 +14,6 @@ composefile="$workdir/docker-compose.yml"
 
 # 基础工具和文件创建
 function jd_sku_base(){
-    apt update; apt install git curl wget -y
-    #
     rm -rf $workdir
     git clone https://github.com/mixool/jd_sku.git $workdir
 }
