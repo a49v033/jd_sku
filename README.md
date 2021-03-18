@@ -2,7 +2,7 @@
 
 #### 快速部署
 1. `wget --no-check-certificate https://raw.githubusercontent.com/mixool/jd_sku/main/jdformat.sh && chmod +x jdformat.sh`
-2. `bash jdformat.sh jd_sku_var@JD_COOKIE@pt_key=aaa;pt_pin=aaaa; jd_sku_var@ENABLE_AUTO_HELP@true jd_sku_var@CUSTOM_SHELL_FILE=https://raw.githubusercontent.com/mixool/jd_sku/main/jd_i-chenzhe.sh`
+2. `bash jdformat.sh 'jd_sku_var@JD_COOKIE@pt_key=aaa;pt_pin=aaaa; jd_sku_var@ENABLE_AUTO_HELP@true jd_sku_var@CUSTOM_SHELL_FILE=https://raw.githubusercontent.com/mixool/jd_sku/main/jd_i-chenzhe.sh'`
 
 #### 容器执行
 1. cd /jd_sku/jd_scripts && docker-compose up -d
