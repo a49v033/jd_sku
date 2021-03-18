@@ -19,9 +19,12 @@ bash jdformat.sh 'jd_sku_var@ENABLE_AUTO_HELP@true jd_sku_var@CUSTOM_SHELL_FILE@
 #### 容器执行  
 * `cd /jd_sku/jd_scripts && docker-compose up -d`
 * `docker-compose logs`
-* cookie扫码获取: `docker exec -it jd_scripts /bin/sh -c 'node getJDCookie.js'`
+* cookie扫码获取 `docker exec -it jd_scripts /bin/sh -c 'node getJDCookie.js'`
 * 查看任务列表 `docker exec -it jd_scripts /bin/sh -c 'crontab -l'`
-* 执行指定任务 `docker exec -it jd_scripts /bin/sh -c 'git -C /scripts pull && node /scripts/jd_bean_change.js'`
+* 执行指定任务
+```bash
+docker exec -it jd_scripts /bin/sh -c 'git -C /scripts pull && node /scripts/jd_bean_change.js'
+```
 * 其它 [lxk0301/jd_docker](https://gitee.com/lxk0301/jd_docker), 请遵守lxk0301项目的一切声明
   
 ### Tips:
