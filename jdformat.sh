@@ -3,9 +3,8 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin && expor
 # Usage:
 ## wget --no-check-certificate https://raw.githubusercontent.com/mixool/jd_sku/main/jdformat.sh && chmod +x jdformat.sh && bash jdformat.sh
 
-# 需传入参数,参数中含有fromfile就从文件读取配置：fromfile@/etc/.jd_sku 
+# 传入参数中含有fromfile就从文件读取配置：fromfile@/etc/.jd_sku 
 echo $@ | grep -qE "fromfile@[^ ]+" && all_parameter=($(cat $(echo $@ | grep -oE "fromfile@[^ ]+" | cut -f2 -d@))) || all_parameter=($(echo $@))
-[[ ${all_parameter[*]} == "" ]] && echo 获取传入参数失败 && exit 1
 
 # 文件路径： jd_scripts diy 脚本和log等的保存路径
 workdir="/jd_sku/jd_scripts" && [[ ! -d "$workdir" ]] && mkdir -p $workdir
