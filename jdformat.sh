@@ -8,13 +8,12 @@ echo $@ | grep -qE "fromfile@[^ ]+" && all_parameter=($(cat $(echo $@ | grep -oE
 
 # 文件路径： jd_scripts diy 脚本和log等的保存路径
 workdir="/jd_sku/jd_scripts"
+logfile="$workdir/logs"
 cookiefile="$workdir/cookie.file"
 composefile="$workdir/docker-compose.yml"
 
 function jd_sku_base(){
-    # 文件目录
-    [[ ! -d "$workdir" ]] && mkdir -p $workdir || { workdir_bak=${workdir}_$(date +%Y_%m_%d_%H_%M); mv $workdir $workdir_bak; echo $workdir 文件已备份至 $workdir_bak; }
-    git clone https://github.com/mixool/jd_sku.git $workdir
+    [[ ! -d "$workdir" ]] && git clone https://github.com/mixool/jd_sku.git $workdir
 }
 
 function jd_sku_var(){
@@ -34,7 +33,7 @@ function jd_sku_var(){
 }
 
 function jd_sku_initck() {
-    # 传入参数格式为 jd_sku_initck@https://gist.github.com 时从网络地址获取cookie,格式为jd_sku_initck时从workdir目录下的cookie.file获取cookie，再配置docker-compose.yml
+    # 传入参数格式为 jd_sku_initck@https://gist.github.com 时从网络地址获取cookie,无参数时从目录下的cookie.file获取cookie，再配置docker-compose.yml
     cookie_file_url=$(echo ${all_parameter[*]} | grep -oE "jd_sku_initck@http[^ ]+" | cut -f2 -d@ | head -n1)
     [[ $cookie_file_url != "" ]] && wget -O $cookiefile $cookie_file_url && cookies="$(cat $cookiefile | grep -vE "^#" | tr "\n" "&" | sed "s/&$//")"
     [[ $cookie_file_url == "" ]] && cookies="$(cat $cookiefile | grep -vE "^#" | tr "\n" "&" | sed "s/&$//")"
