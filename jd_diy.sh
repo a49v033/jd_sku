@@ -8,7 +8,7 @@ git clone https://github.com/i-chenzhe/qx.git /i-chenzhe
 for jsname in $(ls /i-chenzhe | grep -E "js$" | tr "\n" " "); do cp /i-chenzhe/$jsname /scripts/i-chenzhe_$jsname; done
 for jsname in $(ls /i-chenzhe | grep -E "js$" | tr "\n" " "); do
     jsnamecron=$(cat /i-chenzhe/$jsname | grep -A 1 -E "\[Script\]" | grep -oE "^cron.*$jsname" | cut -d\" -f2)
-    [[ $jsnamecron != "" ]] echo "$jsnamecron node /scripts/i-chenzhe_$jsname >> /scripts/logs/i-chenzhe_$jsname.log 2>&1" >> /scripts/docker/merged_list_file.sh
+    [[ $jsnamecron != "" ]] && echo "$jsnamecron node /scripts/i-chenzhe_$jsname >> /scripts/logs/i-chenzhe_$jsname.log 2>&1" >> /scripts/docker/merged_list_file.sh
 done
 
 #### cui521 https://github.com/cui521/jdqd
