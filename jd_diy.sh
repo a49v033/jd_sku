@@ -10,6 +10,9 @@ for jsname in $(cat /i-chenzhe/qx.gallery.json | grep -oE "https://[^,]*js" | cu
 for jsname in $(cat /i-chenzhe/qx.gallery.json | grep -oE "https://[^,]*js" | cut -f7 -d/ | tr "\n" " "); do
     echo "$(cat /i-chenzhe/qx.gallery.json | grep -oE "\".*$jsname" | cut -f4 -d\" | awk '{print $1,$2,$3,$4,$5}') node /scripts/i-chenzhe_$jsname >> /scripts/logs/i-chenzhe_$jsname.log 2>&1" >> /scripts/docker/merged_list_file.sh
 done
+# z_city_cash
+wget --no-check-certificate -O /scripts/i-chenzhe_z_city_cash.js https://raw.githubusercontent.com/i-chenzhe/qx/main/z_city_cash.js
+echo "20 0,10,20 * * * node /scripts/i-chenzhe_z_city_cash.js >> /scripts/logs/i-chenzhe_z_city_cash.js 2>&1" >> /scripts/docker/merged_list_file.sh
 
 #### cui521 https://github.com/cui521/jdqd
 wget --no-check-certificate -O /scripts/cui521_DIY_shopsign.js https://raw.githubusercontent.com/cui521/jdqd/main/DIY_shopsign.js
