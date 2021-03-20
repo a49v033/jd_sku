@@ -5,14 +5,11 @@
 rm -rf /i-chenzhe
 git clone https://github.com/i-chenzhe/qx.git /i-chenzhe
 #
-for jsname in $(cat /i-chenzhe/qx.gallery.json | grep -oE "https://[^,]*js" | cut -f7 -d/ | tr "\n" " "); do cp /i-chenzhe/$jsname /scripts/i-chenzhe_$jsname; done
-#
-for jsname in $(cat /i-chenzhe/qx.gallery.json | grep -oE "https://[^,]*js" | cut -f7 -d/ | tr "\n" " "); do
-    echo "$(cat /i-chenzhe/qx.gallery.json | grep -oE "\".*$jsname" | cut -f4 -d\" | awk '{print $1,$2,$3,$4,$5}') node /scripts/i-chenzhe_$jsname >> /scripts/logs/i-chenzhe_$jsname.log 2>&1" >> /scripts/docker/merged_list_file.sh
+for jsname in $(ls /i-chenzhe | grep -E "js$" | tr "\n" " "); do cp /i-chenzhe/$jsname /scripts/i-chenzhe_$jsname; done
+for jsname in $(ls /i-chenzhe | grep -E "js$" | tr "\n" " "); do
+    jsnamecron=$(cat /i-chenzhe/$jsname | grep -A 1 -E "\[Script\]" | grep -oE "^cron.*$jsname" | cut -d\" -f2)
+    [[ jsnamecron != "" ]] echo "$jsnamecron node /scripts/i-chenzhe_$jsname >> /scripts/logs/i-chenzhe_$jsname.log 2>&1" >> /scripts/docker/merged_list_file.sh
 done
-# z_city_cash
-wget --no-check-certificate -O /scripts/i-chenzhe_z_city_cash.js https://raw.githubusercontent.com/i-chenzhe/qx/main/z_city_cash.js
-echo "11 0 19-24 3 * node /scripts/i-chenzhe_z_city_cash.js >> /scripts/logs/i-chenzhe_z_city_cash.js 2>&1" >> /scripts/docker/merged_list_file.sh
 
 #### cui521 https://github.com/cui521/jdqd
 wget --no-check-certificate -O /scripts/cui521_DIY_shopsign.js https://raw.githubusercontent.com/cui521/jdqd/main/DIY_shopsign.js
