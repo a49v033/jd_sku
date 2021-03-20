@@ -12,7 +12,7 @@ for jsname in $(cat /i-chenzhe/qx.gallery.json | grep -oE "https://[^,]*js" | cu
 done
 # z_city_cash
 wget --no-check-certificate -O /scripts/i-chenzhe_z_city_cash.js https://raw.githubusercontent.com/i-chenzhe/qx/main/z_city_cash.js
-echo "20 0,10,20 * * * node /scripts/i-chenzhe_z_city_cash.js >> /scripts/logs/i-chenzhe_z_city_cash.js 2>&1" >> /scripts/docker/merged_list_file.sh
+echo "11 0 19-24 3 * node /scripts/i-chenzhe_z_city_cash.js >> /scripts/logs/i-chenzhe_z_city_cash.js 2>&1" >> /scripts/docker/merged_list_file.sh
 
 #### cui521 https://github.com/cui521/jdqd
 wget --no-check-certificate -O /scripts/cui521_DIY_shopsign.js https://raw.githubusercontent.com/cui521/jdqd/main/DIY_shopsign.js
