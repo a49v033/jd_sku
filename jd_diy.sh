@@ -10,7 +10,3 @@ for jsname in $(ls /i-chenzhe | grep -E "js$" | tr "\n" " "); do
     jsnamecron="$(cat /i-chenzhe/$jsname | grep -A 1 -E "\[Script\]" | grep -oE "^cron.*$jsname" | cut -d\" -f2)"
     test -z "$jsnamecron" || echo "$jsnamecron node /scripts/i-chenzhe_$jsname >> /scripts/logs/i-chenzhe_$jsname.log 2>&1" >> /scripts/docker/merged_list_file.sh
 done
-
-#### cui521 https://github.com/cui521/jdqd
-wget --no-check-certificate -O /scripts/cui521_DIY_shopsign.js https://raw.githubusercontent.com/cui521/jdqd/main/DIY_shopsign.js
-echo "0 8,20 * * * node /scripts/cui521_DIY_shopsign.js >> /scripts/logs/cui521_DIY_shopsign.js.log 2>&1" >> /scripts/docker/merged_list_file.sh
