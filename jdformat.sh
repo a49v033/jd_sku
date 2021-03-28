@@ -39,6 +39,8 @@ function jd_sku_initck() {
     [[ $cookie_file_url == "" ]] && cookies="$(cat $cookiefile | grep -vE "^#" | tr "\n" "&" | sed "s/&$//")"
     sed -i "/JD_COOKIE.*/d" $composefile
     echo "                - JD_COOKIE=$cookies" >>$composefile
+    # 替换logs目录下的cookies.list文件供spnode使用
+    cat $cookiefile | grep -vE "^#" >$logfile/cookies.list
     return 0
 }
 
