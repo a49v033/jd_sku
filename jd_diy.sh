@@ -3,7 +3,7 @@
 
 function monkcoder(){
     # https://github.com/monk-coder/dust
-    rm -rf /monkcoder
+    rm -rf /monkcoder /scripts/monkcoder_*
     git clone https://github.com/monk-coder/dust.git /monkcoder
     # 拷贝新文件
     for jsname in $(find /monkcoder -name "*.js" | grep -vE "\/backup\/"); do cp ${jsname} /scripts/monkcoder_${jsname##*/}; done
@@ -15,7 +15,7 @@ function monkcoder(){
 
 function whyour(){
     # https://github.com/whyour/hundun/tree/master/quanx
-    rm -rf /whyour
+    rm -rf /whyour /scripts/whyour_*
     git clone https://github.com/whyour/hundun.git /whyour
     # 拷贝新文件
     for jsname in jx_factory.js jx_factory_component.js jdzz.js jd_zjd_tuan.js; do cp /whyour/quanx/$jsname /scripts/whyour_$jsname; done
