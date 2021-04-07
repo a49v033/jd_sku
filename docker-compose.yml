@@ -12,7 +12,7 @@ jd_scripts:
                 - PUSH_PLUS_TOKEN
                 - PUSH_PLUS_USER
                 - MARKET_COIN_TO_BEANS=20
-                - RANDOM_DELAY_MAX=20
+                - RANDOM_DELAY_MAX=30
                 - ENABLE_AUTO_HELP=true
                 - CRZAY_JOY_COIN_ENABLE=Y
                 - JDJOY_APPLYJDBEAN=2000

@@ -8,12 +8,18 @@ apt update && apt install -y python3-pip curl vim git moreutils; curl -sSL get.d
 ```bash
 wget --no-check-certificate -O jdformat.sh https://raw.githubusercontent.com/mixool/jd_sku/main/jdformat.sh && chmod +x jdformat.sh && bash jdformat.sh
 ```
-* 扫码获取cookie,按一行一个的格式填入/jd_sku/jd_scripts/cookie.file后再执行格式化脚本后重启jd_scripts
+* 扫码获取cookie,按一行一个的格式填入/jd_sku/jd_scripts/cookie.file后再执行格式化脚本
 ```bash
 cd /jd_sku/jd_scripts && docker-compose up -d
 docker exec -it jd_scripts /bin/sh -c 'node getJDCookie.js'
 vim /jd_sku/jd_scripts/cookie.file
-cd /jd_sku/jd_scripts && bash jdformat.sh && docker-compose up -d
+cd /jd_sku/jd_scripts && bash jdformat.sh
+```
+* 按需修改[lxk0301/jd_docker支持的其它变量](https://gitee.com/lxk0301/jd_docker/blob/master/githubAction.md)后重启jd_scripts
+```bash
+cd /jd_sku/jd_scripts
+vim /jd_sku/jd_scripts/docker-compose.yml
+docker-compose up -d
 ```
 * 常用指令
 ```bash
