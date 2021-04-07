@@ -1,5 +1,5 @@
-> [lxk0301/jd_docker](https://gitee.com/lxk0301/jd_docker) 部署 FOR VPS Debian 10 64
-  
+> [lxk0301/jd_docker](https://gitee.com/lxk0301/jd_docker) 部署记录 FOR VPS Debian 10 64
+> `CUSTOM_SHELL_FILE=https://raw.githubusercontent.com/mixool/jd_sku/main/jd_diy.sh`
 #### 部署
 * docker docker-compose安装
 ```bash
@@ -33,5 +33,5 @@ cd /jd_sku/jd_scripts && docker-compose restart jd_scripts
   
 #### Thanks:
 * [lxk0301/jd_docker](https://gitee.com/lxk0301/jd_docker)
-* [i-chenzhe](https://github.com/i-chenzhe/qx.git)
+* [monk-coder](https://github.com/monk-coder/dust)
 * 其它diy脚本中涉及到的作者
