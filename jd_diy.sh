@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 ## CUSTOM_SHELL_FILE for https://gitee.com/lxk0301/jd_docker/tree/master/docker
+### 编辑docker-compose.yml文件添加 - CUSTOM_SHELL_FILE=https://raw.githubusercontent.com/mixool/jd_sku/main/jd_diy.sh
 
 function monkcoder(){
     # https://github.com/monk-coder/dust
